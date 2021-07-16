@@ -5,9 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Rock Paper Scissors In JavaScript</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <section>
+        <button id="rock"><img src="images/1faa8.png" class="img-responsive"></button>
+        <button id="paper"><img src="images/paper_111691001.jpg" class="img-responsive"></button>
+        <button id="scissors"><img src="images/Pair_of_scissors_with_black_handle,_2015-06-07.jpg" class="img-responsive"></button>
+    </section>
+    <section class="results"> 
+        <div>
+            You
+            <span class="result-score" data-your-score>0</span>
+        </div>
+
+        <div>
+            Timer
+            <span class="timer">0</span>
+        </div>
+        
+        <div data-final-column>
+        Computer
+        <span class="result-score" data-computer-score>0</span>
+        </div>
+          <!-- <div class="result-selection winner">✊</div>
+          <div class="result-selection">✌</div> -->
+    </section>
 
     <script src="app.js"></script>
 </body>

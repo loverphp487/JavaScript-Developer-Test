@@ -40,7 +40,7 @@ section{
 
 
 
-button{
+section.images button{
     border: none;
     position: relative;
     background: transparent;
@@ -64,21 +64,21 @@ button{
     object-fit: cover;
 }
 
-button:not(:first-child){
+section.images button:not(:first-child){
     transform: scale(2);
 }
 
-button:hover{
+section.images button:hover{
     transform: scale(5);
 }
 
-button.user-choice{
+section.images button.user-choice{
     transform: scale(5);
     border: 2px solid #ff0000;
     border-radius: 0.5rem;
 }
 
-button.user-choice::after{
+section.images button.user-choice::after{
     content: 'your choice';
     position: absolute;
     width: 100%;
@@ -93,12 +93,12 @@ button.user-choice::after{
 
 }
 
-button.computer-choice{
+section.images button.computer-choice{
     transform: scale(5);
     border: 2px solid yellow;
 }
 
-button.computer-choice::after{
+section.images button.computer-choice::after{
     content: 'computer choice';
     position: absolute;
     width: 100%;
@@ -147,3 +147,13 @@ section.results{
         transition: all 0.25s ease-in-out;
     }
   }
+
+button#start{
+    padding:1.5rem 2rem;
+    background: royalblue;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.24),1px 1px 3px rgba(0, 0, 0, 0.12);
+}

@@ -1,6 +1,7 @@
 const button = document.querySelectorAll('button');
 const timer = document.querySelector('.timer');
-let checkTimer = parseInt(timer.innerHTML);
+const checkResult = document.getElementById('checkResult');
+let checkTimer = 0;
 let computerChoice;
 let userChoice;
 let result;
@@ -33,7 +34,7 @@ button.forEach((btn,idx)=>{
 
 function checkTheResult(){
     let random = Math.floor(Math.random() * 3);
-    button.forEach((b,id)=>{ b.setAttribute('disabled',false);  b.style.cursor='pointer'; })
+    button.forEach((b,id)=>{ b.removeAttribute('disabled',false);  b.style.cursor='pointer'; })
     button[random].classList.add('computer-choice');
     computerChoice = document.querySelector('.computer-choice').getAttribute('id');
     showResult();
@@ -63,7 +64,7 @@ function showResult(){
         result = 'you lose!'
       }
 
-      timer.innerText = result;
+      checkResult.innerHTML = 'Result :'+ result + '<br> try again  <button id="start">Again !</button>';
 }
 
 

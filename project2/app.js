@@ -11,6 +11,9 @@ function newTry(){
     button.forEach((b,id)=>{ b.classList.remove('user-choice','computer-choice');  });
     checkResult.innerHTML = 'Timer <span class="timer">0</span>';
     timer = document.querySelector('.timer');
+
+
+    
 }
 
 

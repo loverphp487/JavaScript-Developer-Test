@@ -2,6 +2,8 @@ let button = document.querySelectorAll('button');
 let timer = document.querySelector('.timer');
 let checkResult = document.getElementById('checkResult');
 let checkTimer = parseInt(timer.innerHTML);
+let yourscore = document.querySelector('.your-score').innerHTML;
+let computerscore = document.querySelector('.computer-score').innerHTML;
 let computerChoice;
 let userChoice;
 let result;
@@ -11,9 +13,6 @@ function newTry(){
     button.forEach((b,id)=>{ b.classList.remove('user-choice','computer-choice');  });
     checkResult.innerHTML = 'Timer <span class="timer">0</span>';
     timer = document.querySelector('.timer');
-
-
-    
 }
 
 
@@ -63,23 +62,37 @@ function showResult(){
     }
     if (computerChoice === 'rock' && userChoice === "paper") {
         result = 'you win!';
+        yourscore++; 
+        computerscore =  (computerscore > 0 ? computerscore -1 : 0);
       }
       if (computerChoice === 'rock' && userChoice === "scissors") {
         result = 'you lost!';
+        computerscore++; 
+        yourscore =  (yourscore > 0 ? yourscore -1 : 0);
       }
       if (computerChoice === 'paper' && userChoice === "scissors") {
         result = 'you win!';
+        yourscore++; 
+        computerscore =  (computerscore > 0 ? computerscore -1 : 0);
       }
       if (computerChoice === 'paper' && userChoice === "rock") {
         result = 'you lose!';
+        computerscore++; 
+        yourscore = (yourscore > 0 ? yourscore -1 : 0);
       }
       if (computerChoice === 'scissors' && userChoice === "rock") {
         result = 'you win!';
+        yourscore++; 
+        computerscore =  (computerscore > 0 ? computerscore -1 : 0);
       }
       if (computerChoice === 'scissors' && userChoice === "paper") {
         result = 'you lose!';
+        computerscore++; 
+        yourscore =  (yourscore > 0 ? yourscore - 1 : 0);
       }
       checkResult.innerHTML = 'Result :'+ result + '<br> try again  <button id="start" onclick="newTry()">Again !</button>';
+      document.querySelector('.your-score').innerHTML = yourscore;
+      document.querySelector('.computer-score').innerHTML = computerscore;
 }
 
 

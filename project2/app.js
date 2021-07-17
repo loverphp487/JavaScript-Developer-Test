@@ -1,36 +1,49 @@
-const button = document.querySelectorAll('button');
-const timer = document.querySelector('.timer');
-const checkResult = document.getElementById('checkResult');
-let checkTimer = 0;
+let button = document.querySelectorAll('button');
+let timer = document.querySelector('.timer');
+let checkResult = document.getElementById('checkResult');
+let checkTimer = parseInt(timer.innerHTML);
 let computerChoice;
 let userChoice;
 let result;
 
 
-button.forEach((btn,idx)=>{
-    var self = this;
-    btn.addEventListener('click',(e)=>{
-        button.forEach((b,id)=>{ b.classList.remove('user-choice');  })
-        btn.classList.add('user-choice');
-        userChoice = e.currentTarget.id;
-
-       let stopTimer =  setInterval(() => {
-            timer.innerHTML = checkTimer;
-            button.forEach((b,id)=>{ b.setAttribute('disabled',true); b.style.cursor='not-allowed';  })
-            setTimeout(() => {
-                clearInterval(stopTimer);
-            }, 3000);
-            checkTimer++;
-        }, 1000);
-
-        setTimeout(() => {
-            checkTheResult();
-        }, 4000);
+function newTry(){
+    button.forEach((b,id)=>{ b.classList.remove('user-choice','computer-choice');  });
+    checkResult.innerHTML = 'Timer <span class="timer">0</span>';
+    timer = document.querySelector('.timer');
+}
 
 
+function main(){
+    button.forEach((btn,idx)=>{
+        btn.addEventListener('click',(e)=>{
+            button.forEach((b,id)=>{ b.classList.remove('user-choice');  })
+            btn.classList.add('user-choice');
+            userChoice = e.currentTarget.id;
+            console.log(checkTimer);
+    
+            if(checkTimer === 0){
+                let stopTimer =  setInterval(() => {
+                    checkTimer++;
+                    timer.innerHTML = checkTimer;
+                    button.forEach((b,id)=>{ b.setAttribute('disabled',true); b.style.cursor='not-allowed';  })
+                    setTimeout(() => {
+                        clearInterval(stopTimer);
+                    }, 3000);
+                    
+                }, 1000);
+        
+                setTimeout(() => {
+                    checkTheResult();
+                    checkTimer = 0;
+                }, 4000);
+            }
+    
+    
+        })
     })
-})
-
+    
+}
 
 function checkTheResult(){
     let random = Math.floor(Math.random() * 3);
@@ -46,25 +59,26 @@ function showResult(){
         result = 'it is the same';
     }
     if (computerChoice === 'rock' && userChoice === "paper") {
-        result = 'you win!'
+        result = 'you win!';
       }
       if (computerChoice === 'rock' && userChoice === "scissors") {
-        result = 'you lost!'
+        result = 'you lost!';
       }
       if (computerChoice === 'paper' && userChoice === "scissors") {
-        result = 'you win!'
+        result = 'you win!';
       }
       if (computerChoice === 'paper' && userChoice === "rock") {
-        result = 'you lose!'
+        result = 'you lose!';
       }
       if (computerChoice === 'scissors' && userChoice === "rock") {
-        result = 'you win!'
+        result = 'you win!';
       }
       if (computerChoice === 'scissors' && userChoice === "paper") {
-        result = 'you lose!'
+        result = 'you lose!';
       }
-
-      checkResult.innerHTML = 'Result :'+ result + '<br> try again  <button id="start">Again !</button>';
+      checkResult.innerHTML = 'Result :'+ result + '<br> try again  <button id="start" onclick="newTry()">Again !</button>';
 }
 
 
+
+window.addEventListener('DOMContentLoaded',main);
